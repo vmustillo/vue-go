@@ -45,7 +45,7 @@ func NewServer(port int) *Server {
 
 	server.HTTPServer = &http.Server{
 		Addr: server.Addr,
-		Handler: router.Router,
+		Handler: handler,
 		ReadTimeout: 10 * time.Second,
 		WriteTimeout: 10 * time.Second,
 		MaxHeaderBytes: 1 << 20,
