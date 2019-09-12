@@ -20,6 +20,5 @@ func NewRouter() *RouteHandler {
 	router.Router = mux.NewRouter().StrictSlash(true)
 
 	router.Router.PathPrefix(staticDir).Handler(http.StripPrefix(staticDir, http.FileServer(http.Dir("." + staticDir))))
-
 	return &router
 }
