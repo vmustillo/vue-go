@@ -23,6 +23,16 @@ func NewRouter() *RouteHandler {
 	router.Router.PathPrefix(staticDir).Handler(http.StripPrefix(staticDir, http.FileServer(http.Dir("." + staticDir))))
 
 	router.Router.Use(Routes.Middleware)
+
+	routes := Routes.GetRoutes()
+
+	for _, route := range routes {
+		router.Router.
+			Methods(route.Method).
+			Path(route.Pattern).
+			Name(route.Name).
+			Handler(route.HandlerFunc)
+	}
 	
 	return &router
 }
