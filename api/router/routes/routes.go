@@ -7,7 +7,7 @@ import (
 
 func Middleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		log.Println("Inside middleware")
+		log.Println("Hit main middleware")
 		next.ServeHTTP(w, r)
 	})
 }
